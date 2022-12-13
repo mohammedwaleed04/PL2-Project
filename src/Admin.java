@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.logging.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Admin extends javax.swing.JFrame {
     Connection con;
     public Admin() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         createConnection();
         FillAddTableModel();
         FillTableModel();
