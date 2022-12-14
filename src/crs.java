@@ -47,22 +47,22 @@ public class crs extends javax.swing.JFrame {
     
         jTable00.addColumn("lec_no ");
         jTable00.addColumn("lec_path");
-        createConnection();
+        con = MyConnection.createConnection();
         FillTableMode2();
         FillTableMode3();
 //        FillModel();
     }
     
-    void createConnection() {
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
-            
-        }
-        catch (ClassNotFoundException | SQLException e){
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
+//    void createConnection() {
+//        try{
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
+//            
+//        }
+//        catch (ClassNotFoundException | SQLException e){
+//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//    }
     
 //     public void FillModel(){
 //         try{

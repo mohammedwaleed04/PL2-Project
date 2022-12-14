@@ -24,19 +24,19 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn() {
         initComponents();
         this.setLocationRelativeTo(null);
-        createConnection();
+        con = MyConnection.createConnection();
     }
     
-    void createConnection() {
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
-            
-        }
-        catch (ClassNotFoundException | SQLException e){
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
-        }
-    }
+//    void createConnection() {
+//        try{
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "admin");
+//            
+//        }
+//        catch (ClassNotFoundException | SQLException e){
+//            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
+//        }
+//    }
     
     private String username;
     private String password;
@@ -69,7 +69,7 @@ public class SignIn extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         userField.setForeground(new java.awt.Color(204, 204, 204));
-        userField.setText("USERNAME");
+        userField.setText("USERNAME"); // NOI18N
         userField.setToolTipText("");
         userField.setMaximumSize(new java.awt.Dimension(2147483500, 2147483647));
         userField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,7 +117,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        adminCheckBox.setText("Administrator");
+        adminCheckBox.setText("Login As Admin");
 
         passField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         passField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -140,9 +140,6 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(adminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passLabel)
@@ -153,10 +150,13 @@ public class SignIn extends javax.swing.JFrame {
                             .addComponent(passField))
                         .addGap(253, 253, 253))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(adminCheckBox))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,7 +180,6 @@ public class SignIn extends javax.swing.JFrame {
         );
 
         image.setBackground(new java.awt.Color(0, 0, 153));
-        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Downloads\\WhatsApp Image 2022-12-08 at 12.34.36 AM.jpeg")); // NOI18N
 
         lms.setBackground(new java.awt.Color(153, 153, 255));
         lms.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -228,14 +227,14 @@ public class SignIn extends javax.swing.JFrame {
             Statement smt1 = con.createStatement();
             ResultSet rs = smt.executeQuery("Select email, password, teacher, admin from users where email = '" + username + "' and password = '" + password + "'");
             ResultSet rs1 = smt1.executeQuery("select id, name, email, semester, gender from student where email = '" + username + "'");
-            String nameS, emailS, ID;
+            String nameS, emailS, ID, gender;
             if(rs1.next()){
                 nameS = rs1.getString("name");
                 ID = rs1.getString("id");
                 emailS = rs1.getString("email");
-                 
+                gender = rs1.getString("gender");
                 this.dispose();
-                    new crs(nameS, ID, emailS, "male").setVisible(true);
+                    new crs(nameS, ID, emailS, gender).setVisible(true);
             }
             
             if(rs.next()){

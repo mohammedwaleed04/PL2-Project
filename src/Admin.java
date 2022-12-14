@@ -24,22 +24,22 @@ public class Admin extends javax.swing.JFrame {
     public Admin() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        createConnection();
+        con = MyConnection.createConnection();
         FillAddTableModel();
         FillTableModel();
         FillTeacherTableModel();
     }
     
-    void createConnection() {
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
-            
-        }
-        catch (ClassNotFoundException | SQLException e){
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
+//    void createConnection() {
+//        try{
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "admin");
+//            
+//        }
+//        catch (ClassNotFoundException | SQLException e){
+//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,7 +189,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +233,7 @@ public class Admin extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 155, Short.MAX_VALUE))
+                .addGap(0, 238, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,7 +685,7 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1656, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1737, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -783,15 +783,20 @@ public class Admin extends javax.swing.JFrame {
             else{
                 s = new Student(fNameS.getText() + " " + lNameS.getText(), emailS.getText(), passwordS.getText(), "female", Integer.parseInt(semesterS.getText()));
             }
-        
             smt.executeUpdate("insert into student(name, email, password, semester, gender) values('" + s.getName() + "', '" + s.getEmail() + "', '" + s.getPassword() + "', " + s.getSemester() + ", '" + s.getGender() + "')");
             smt.executeUpdate("insert into users(name, email, password, gender, teacher, admin) values('" + s.getName() + "', '" + s.getEmail() + "', '" + s.getPassword() + "', '" + s.getGender() + "' , 0, " + admin + ")");
             smt.close();
+            FillTableModel();
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Semester must be a number!");
+        }
+        catch(SQLIntegrityConstraintViolationException e){
+            JOptionPane.showMessageDialog(this,"This email already exists!");
         }
         catch(SQLException e){
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
         }
-        FillTableModel();
     }//GEN-LAST:event_addStudentActionPerformed
 
     private void femaleSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleSActionPerformed
@@ -844,6 +849,12 @@ public class Admin extends javax.swing.JFrame {
             FillTableModel();
             smt.close();
             smt2.close();
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Semester must be a number!");
+        }
+        catch(SQLIntegrityConstraintViolationException e){
+            JOptionPane.showMessageDialog(this,"This email already exists!");
         }
         catch(SQLException e){
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
@@ -923,6 +934,9 @@ public class Admin extends javax.swing.JFrame {
             smt.close();
             smt2.close();
         }
+        catch(SQLIntegrityConstraintViolationException e){
+            JOptionPane.showMessageDialog(this,"This email already exists!");
+        }
         catch(SQLException e){
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -955,11 +969,14 @@ public class Admin extends javax.swing.JFrame {
             smt.executeUpdate("insert into teacher(name, email, password, gender) values('" + t.getName() + "', '" + t.getEmail() + "', '" + t.getPassword() + "', '" + t.getGender() + "')");
             smt.executeUpdate("insert into users(name, email, password, gender, teacher, admin) values('" + t.getName() + "', '" + t.getEmail() + "', '" + t.getPassword() + "', '" + t.getGender() + "' , 1, " + admin + ")");
             smt.close();
+            FillTeacherTableModel();
+        }
+        catch(SQLIntegrityConstraintViolationException e){
+            JOptionPane.showMessageDialog(this,"This email already exists!");
         }
         catch(SQLException e){
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
         }
-        FillTeacherTableModel();
     }//GEN-LAST:event_addTeacherActionPerformed
 
     private void allTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allTableMouseClicked

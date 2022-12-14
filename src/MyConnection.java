@@ -13,11 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class MyConnection {
 //    Connection con;
-    
     public static Connection createConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "admin");
             return con;
 //        }catch (ClassNotFoundException | SQLException e){
 //            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);

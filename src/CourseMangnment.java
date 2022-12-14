@@ -1,3 +1,5 @@
+package lms;
+
 import java.awt.print.PrinterException;
 import java.io.*;
 import java.sql.*;
@@ -17,6 +19,7 @@ public class CourseMangnment extends javax.swing.JFrame {
   DefaultTableModel Model1;
     public CourseMangnment() {
     initComponents();  
+    con = MyConnection.createConnection();
      this.setLocationRelativeTo(null); 
     CourseTable1 =new DefaultTableModel();
     
@@ -33,14 +36,14 @@ public class CourseMangnment extends javax.swing.JFrame {
          Model1.addColumn("Lecture's Tittle");
          Model1.addColumn("Content");
        
-     try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
-            
-        }
-        catch (ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(this, "Connection Failed");
-        }
+//     try{
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
+//            
+//        }
+//        catch (ClassNotFoundException | SQLException e){
+//            JOptionPane.showMessageDialog(this, "Connection Failed");
+//        }
      
      FillTableModel();
      FillTableModel1();
