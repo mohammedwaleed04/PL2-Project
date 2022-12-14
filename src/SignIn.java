@@ -69,7 +69,6 @@ public class SignIn extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         userField.setForeground(new java.awt.Color(204, 204, 204));
-        userField.setText("USERNAME"); // NOI18N
         userField.setToolTipText("");
         userField.setMaximumSize(new java.awt.Dimension(2147483500, 2147483647));
         userField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,8 +119,9 @@ public class SignIn extends javax.swing.JFrame {
         adminCheckBox.setText("Login As Admin");
 
         passField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        passField.setForeground(new java.awt.Color(204, 204, 204));
         passField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        passField.setText("PASSWORD");
+        passField.setToolTipText("PASSWORD");
         passField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passFieldMouseClicked(evt);
