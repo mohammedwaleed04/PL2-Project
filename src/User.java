@@ -10,15 +10,20 @@ package lms;
  * @author PC
  */
 public class User {
-
-    protected String name, email, gender;
-    protected String password;
+    
+    protected String name, email, gender, password;
+    protected long userID;
+    protected boolean admin; 
     
     public User(String name, String email, String password, String gender) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.gender = gender;
+    }
+    
+    public long getID(){
+        return userID;
     }
     
     public String getName(){
