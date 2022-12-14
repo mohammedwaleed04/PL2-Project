@@ -1,13 +1,10 @@
 package lms;
 
-
-import lms.SignUp;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.*;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -27,12 +24,17 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn() {
         initComponents();
         this.setLocationRelativeTo(null);
+        createConnection();
+    }
+    
+    void createConnection() {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
+            
         }
         catch (ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(this, "Connection Failed");
+            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         }
     }
     
@@ -56,8 +58,6 @@ public class SignIn extends javax.swing.JFrame {
         passLabel = new javax.swing.JLabel();
         loginBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
-        moreSignUp = new javax.swing.JLabel();
-        signUpBtn = new javax.swing.JButton();
         adminCheckBox = new javax.swing.JRadioButton();
         passField = new javax.swing.JPasswordField();
         image = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class SignIn extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        userField.setForeground(new java.awt.Color(153, 153, 153));
+        userField.setForeground(new java.awt.Color(204, 204, 204));
         userField.setText("USERNAME");
         userField.setToolTipText("");
         userField.setMaximumSize(new java.awt.Dimension(2147483500, 2147483647));
@@ -117,28 +117,6 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        moreSignUp.setText("Don't have account?");
-
-        signUpBtn.setForeground(new java.awt.Color(0, 153, 153));
-        signUpBtn.setText("SIGN UP");
-        signUpBtn.setToolTipText("");
-        signUpBtn.setAlignmentY(0.0F);
-        signUpBtn.setBorder(null);
-        signUpBtn.setBorderPainted(false);
-        signUpBtn.setContentAreaFilled(false);
-        signUpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        signUpBtn.setIconTextGap(2);
-        signUpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signUpBtnMouseClicked(evt);
-            }
-        });
-        signUpBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpBtnActionPerformed(evt);
-            }
-        });
-
         adminCheckBox.setText("Administrator");
 
         passField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -174,12 +152,6 @@ public class SignIn extends javax.swing.JFrame {
                             .addComponent(userField, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                             .addComponent(passField))
                         .addGap(253, 253, 253))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(moreSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(372, 372, 372))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,11 +176,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
                     .addComponent(cancelBtn))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(moreSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         image.setBackground(new java.awt.Color(0, 0, 153));
@@ -250,38 +218,46 @@ public class SignIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
-        // TODO add your handling code here:
-        //        this.dispose();
-        //        new SignUp().setVisible(true);
-    }//GEN-LAST:event_signUpBtnActionPerformed
-
-    private void signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        new SignUp().setVisible(true);
-    }//GEN-LAST:event_signUpBtnMouseClicked
-
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         username = userField.getText();
         password = passField.getText();
-        if(adminCheckBox.isSelected()){
-            if(username.equals("admin") && password.equals("admin"))
-                this.dispose();
-                new Admin().setVisible(true);
-                return;
-            }
+        
         try{
             Statement smt = con.createStatement();
-            ResultSet rs = smt.executeQuery("Select email, password, teacher from users where email = '" + username + "' and password = '" + password + "'");
+            Statement smt1 = con.createStatement();
+            ResultSet rs = smt.executeQuery("Select email, password, teacher, admin from users where email = '" + username + "' and password = '" + password + "'");
+            ResultSet rs1 = smt1.executeQuery("select id, name, email, semester, gender from student where email = '" + username + "'");
+            String nameS, emailS, ID;
+            if(rs1.next()){
+                nameS = rs1.getString("name");
+                ID = rs1.getString("id");
+                emailS = rs1.getString("email");
+                 
+                this.dispose();
+                    new crs(nameS, ID, emailS, "male").setVisible(true);
+            }
+            
             if(rs.next()){
                 int teacher = Integer.parseInt(rs.getString("teacher"));
-                if(teacher == 1){
-                    System.out.print("this is teacher");
+                int admin = Integer.parseInt(rs.getString("admin"));
+                if(adminCheckBox.isSelected()){
+//                    if(username.equals("admin") && password.equals("root")){
+//                        this.dispose();
+//                       new Admin().setVisible(true);
+//                    }
+                        
+                    //login in to admin page for no students or teachers
+                    if(admin == 1){
+                       this.dispose();
+                       new Admin().setVisible(true);
+                    }
+                    return;
                 }
-                else{
-                    System.out.print("this is student");
+                
+                if(teacher == 1){
+                        this.dispose();
+                        new CourseMangnment().setVisible(true);
                 }
             }
             else{
@@ -340,10 +316,10 @@ public class SignIn extends javax.swing.JFrame {
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-//        int a = JOptionPane.showConfirmDialog(this,JOptionPane.YES_NO_OPTION);
-//        if(a==0){
+        int a = JOptionPane.showConfirmDialog(this,"Are you sure to exit?");
+        if(a==0){
             this.dispose();
-//        }
+        }
     }//GEN-LAST:event_cancelBtnActionPerformed
   
     /**
@@ -387,10 +363,8 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lms;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JLabel moreSignUp;
     private javax.swing.JPasswordField passField;
     private javax.swing.JLabel passLabel;
-    private javax.swing.JButton signUpBtn;
     private javax.swing.JTextField userField;
     // End of variables declaration//GEN-END:variables
 }

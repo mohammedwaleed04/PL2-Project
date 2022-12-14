@@ -36,10 +36,7 @@ public class Admin extends javax.swing.JFrame {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb", "root", "root");
             
         }
-        catch (ClassNotFoundException e){
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
-        }
-        catch(SQLException e){
+        catch (ClassNotFoundException | SQLException e){
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
         }
     }

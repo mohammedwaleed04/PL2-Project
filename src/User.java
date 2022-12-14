@@ -10,7 +10,7 @@ package lms;
  * @author PC
  */
 public class User {
-    
+
     protected String name, email, gender, password;
     protected long userID;
     protected boolean admin; 
@@ -52,5 +52,16 @@ public class User {
     
     public void setPassword(String password){
         this.password = password;
+    }
+    
+    public boolean isAdmin(){
+        return false;
+    }
+    
+//    public abstract void active();
+//    public abstract void deActive();
+            
+    public void deleteUser(User u) {
+        
     }
 }
