@@ -1,5 +1,12 @@
 package lms;
 
+import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -55,6 +62,17 @@ public class User {
     }
     
     public boolean isAdmin(){
+        Connection con =  MyConnection.createConnection();
+        try{
+        Statement smt = con.createStatement();
+            ResultSet rs = smt.executeQuery("select admin from users where email = '" + this.email + "'");
+            if(rs.next()){
+                boolean Admin = rs.getBoolean("admin");
+                return Admin;
+            }
+        }catch(SQLException e){
+           Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+        }
         return false;
     }
     
@@ -62,6 +80,17 @@ public class User {
 //    public abstract void deActive();
             
     public void deleteUser(User u) {
-        
+//        Connection con =  MyConnection.createConnection();
+//        try{
+//            Statement smt = con.createStatement();
+//            String email = emailS.getText();
+//            smt.executeUpdate("delete from student where email = '" + email + "'");
+//            smt.executeUpdate("delete from users where email = '" + email + "'");
+//            FillTableModel();
+//            smt.close();
+//        }
+//        catch(SQLException e){
+//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+//        }
     }
 }

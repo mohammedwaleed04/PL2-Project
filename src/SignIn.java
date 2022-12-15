@@ -62,6 +62,7 @@ public class SignIn extends javax.swing.JFrame {
         passField = new javax.swing.JPasswordField();
         image = new javax.swing.JLabel();
         lms = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGN IN");
@@ -69,6 +70,7 @@ public class SignIn extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         userField.setForeground(new java.awt.Color(204, 204, 204));
+        userField.setText("USERNAME");
         userField.setToolTipText("");
         userField.setMaximumSize(new java.awt.Dimension(2147483500, 2147483647));
         userField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,6 +123,7 @@ public class SignIn extends javax.swing.JFrame {
         passField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         passField.setForeground(new java.awt.Color(204, 204, 204));
         passField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        passField.setText("PASSWORD");
         passField.setToolTipText("PASSWORD");
         passField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,7 +179,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
                     .addComponent(cancelBtn))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         image.setBackground(new java.awt.Color(0, 0, 153));
@@ -187,6 +190,8 @@ public class SignIn extends javax.swing.JFrame {
         lms.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lms.setText("LEARNING MANAGEMENT SYSTEM");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/lmsLogin.jpeg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,23 +199,29 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addGap(51, 51, 51)
                         .addComponent(image)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lms, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                        .addGap(5, 5, 5)))
+                        .addComponent(lms, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1)))
+                .addGap(34, 34, 34)
                 .addComponent(lms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(40, 40, 40))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -221,6 +232,12 @@ public class SignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         username = userField.getText();
         password = passField.getText();
+        
+        if(username.equals("admin") && password.equals("root")){
+            this.dispose();
+            new Admin().setVisible(true);
+            return;
+        }
         
         try{
             Statement smt = con.createStatement();
@@ -234,19 +251,15 @@ public class SignIn extends javax.swing.JFrame {
                 emailS = rs1.getString("email");
                 gender = rs1.getString("gender");
                 this.dispose();
-                    new crs(nameS, ID, emailS, gender).setVisible(true);
+                    new Crs(nameS, ID, emailS, gender).setVisible(true);
             }
             
             if(rs.next()){
                 int teacher = Integer.parseInt(rs.getString("teacher"));
                 int admin = Integer.parseInt(rs.getString("admin"));
                 if(adminCheckBox.isSelected()){
-//                    if(username.equals("admin") && password.equals("root")){
-//                        this.dispose();
-//                       new Admin().setVisible(true);
-//                    }
-                        
-                    //login in to admin page for no students or teachers
+                     
+                    //login in to admin page for students or teachers
                     if(admin == 1){
                        this.dispose();
                        new Admin().setVisible(true);
@@ -359,6 +372,7 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JRadioButton adminCheckBox;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lms;
     private javax.swing.JButton loginBtn;
