@@ -16,7 +16,7 @@ public class MyConnection {
     public static Connection createConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "admin");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "root");
             return con;
 //        }catch (ClassNotFoundException | SQLException e){
 //            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
