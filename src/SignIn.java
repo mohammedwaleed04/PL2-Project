@@ -233,7 +233,7 @@ public class SignIn extends javax.swing.JFrame {
         username = userField.getText();
         password = passField.getText();
         
-        if(username.equals("admin") && password.equals("root")){
+        if(username.equals("admin") && password.equals("admin")){
             this.dispose();
             new Admin().setVisible(true);
             return;
@@ -268,8 +268,8 @@ public class SignIn extends javax.swing.JFrame {
                 }
                 
                 if(teacher == 1){
-                        this.dispose();
-                        new CourseMangnment().setVisible(true);
+                    this.dispose();
+                    new CourseMangnment().setVisible(true);
                 }
             }
             else{
