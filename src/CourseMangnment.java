@@ -4,6 +4,7 @@ import java.awt.print.PrinterException;
 import java.io.*;
 import java.sql.*;
 import java.text.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,7 +17,10 @@ public class CourseMangnment extends javax.swing.JFrame {
      */
  Connection con;
  DefaultTableModel CourseTable1;
-//  DefaultTableModel Model1;
+  DefaultTableModel Model1;
+  DefaultTableModel Model2;
+      ArrayList<Integer> lec_id=new ArrayList<>();
+      ArrayList<Integer> assign_id=new ArrayList<>();
     public CourseMangnment() {
     initComponents();  
     con = MyConnection.createConnection();
@@ -31,10 +35,17 @@ public class CourseMangnment extends javax.swing.JFrame {
         CourseTable1.addColumn("Course (3)");
         CourseTable1.addColumn("Course (4)");
 
-//         Model1 =new DefaultTableModel();
-//         Model1.addColumn("Week Number");
-//         Model1.addColumn("Lecture's Tittle");
-//         Model1.addColumn("Content");
+         Model1 =new DefaultTableModel();
+         Model1.addColumn("Week Number");
+         Model1.addColumn("Course");
+         Model1.addColumn("Content");
+         Model1.addColumn("Lecture Tittle");
+         
+         Model2 =new DefaultTableModel();
+         Model2.addColumn("Week Number");
+         Model2.addColumn("Course");
+         Model2.addColumn("Content");
+         Model2.addColumn("Lecture Tittle");
        
 //     try{
 //            Class.forName("com.mysql.cj.jdbc.Driver");
@@ -46,7 +57,8 @@ public class CourseMangnment extends javax.swing.JFrame {
 //        }
      
      FillTableModelc();
-//     FillTableModel1();
+     FillTableModel1();
+     FillTableModel2();
     }
     
    private void FillTableModelc(){
@@ -71,28 +83,53 @@ public class CourseMangnment extends javax.swing.JFrame {
         }
 
     }
-//    private void FillTableModel1(){
-//        try{
-//            Model1.setRowCount(0);
-//            
-//          PreparedStatement stmt=con.prepareStatement("select * from student;");
-//          
-//          ResultSet rs = stmt.executeQuery();
-//        while(rs.next()){
-//         Model1.addRow(new Object[]{
-//                                          rs.getString(1),
-//                                          rs.getString(2),
-//                                          rs.getString(3)
-//                                         });
-//                                         }
-//
-//        LdTable.setModel(Model1);
-//        
-//        }catch(SQLException ex){
-//            JOptionPane.showMessageDialog(this, " Failed");
-//        }
-//
-//    }
+    private void FillTableModel1(){
+        try{
+            Model1.setRowCount(0);
+            
+          PreparedStatement stmt=con.prepareStatement("select * from lecturetable;");
+          
+          ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+         Model1.addRow(new Object[]{
+                                          rs.getInt(1),
+                                          rs.getString(2),
+                                          rs.getString(3),
+                                          rs.getString(4)
+                                         });
+                                          lec_id.add(rs.getInt(5));
+                                         }
+
+       CourseTable2.setModel(Model1);
+        
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this, " Failed");
+        }
+    }
+          private void FillTableModel2(){
+        try{
+            Model2.setRowCount(0);
+            
+          PreparedStatement stmt=con.prepareStatement("select * from assign;");
+          
+          ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+         Model2.addRow(new Object[]{
+                                          rs.getInt(1),
+                                          rs.getString(2),
+                                          rs.getString(3),
+                                          rs.getString(4)
+                                         });
+                                          assign_id.add(rs.getInt(5));
+                                         }
+
+       CourseTable3.setModel(Model2);
+        
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this, " Failed");
+        }
+
+    }
    
       private void FillSearchBox(){
         try{
@@ -138,16 +175,16 @@ public class CourseMangnment extends javax.swing.JFrame {
             
     }
     
-      public int isEmptyLecture(){
-            if(  WeekNoLD.getText().isEmpty()
-                || LectTittle.getText().isEmpty()
-                ||  Conetent1.getText().isEmpty())
-               
-                return 1;
-     return 0;
-
-            
-    }
+//      public int isEmptyLecture(){
+////            if(  WeekNoLD.getText().isEmpty()
+////                || LectTittle.getText().isEmpty()
+////                ||  Conetent1.getText().isEmpty())
+//               
+//                return 1;
+//     return 0;
+//
+//            
+//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -177,6 +214,7 @@ public class CourseMangnment extends javax.swing.JFrame {
         Course4Label = new javax.swing.JLabel();
         C4Box = new javax.swing.JComboBox<>();
         SemesterTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         SearchStdPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -207,8 +245,8 @@ public class CourseMangnment extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         AddLecture = new javax.swing.JButton();
         DeleteLecture = new javax.swing.JButton();
-        LogoutLecture = new javax.swing.JButton();
         PrintLecture = new javax.swing.JButton();
+        UpdateLecture1 = new javax.swing.JButton();
         AssignmentsPanel = new javax.swing.JPanel();
         LecturePanel1 = new javax.swing.JPanel();
         AddCoursesPanel2 = new javax.swing.JPanel();
@@ -227,8 +265,8 @@ public class CourseMangnment extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         AddAssignment = new javax.swing.JButton();
         DeleteAssignment = new javax.swing.JButton();
-        LogoutAssignment = new javax.swing.JButton();
         PrintAssignment = new javax.swing.JButton();
+        AddLecture2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -346,7 +384,7 @@ public class CourseMangnment extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Student_name");
 
-        C1Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Logic Design", "IT", "Data Structures", "OR" }));
+        C1Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "logic", "pl", "ds", "maths" }));
         C1Box.setToolTipText("select  course");
         C1Box.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         C1Box.addActionListener(new java.awt.event.ActionListener() {
@@ -355,7 +393,7 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
-        C2Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Logic Design", "IT", "Data Structures", "OR" }));
+        C2Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "logic", "pl", "ds", "maths" }));
         C2Box.setToolTipText("select  course");
         C2Box.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         C2Box.addActionListener(new java.awt.event.ActionListener() {
@@ -364,7 +402,7 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
-        C3Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Logic Design", "IT", "Data Structures", "OR" }));
+        C3Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "logic", "pl", "ds", "maths" }));
         C3Box.setToolTipText("select  course");
         C3Box.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -383,11 +421,19 @@ public class CourseMangnment extends javax.swing.JFrame {
         Course4Label.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Course4Label.setText("Course 4");
 
-        C4Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Logic Design", "IT", "Data Structures", "OR" }));
+        C4Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "logic", "pl", "ds", "maths" }));
         C4Box.setToolTipText("select  course");
         C4Box.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         SemesterTextField.setEditable(false);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setText("Exam Statistics");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddCoursesPanelLayout = new javax.swing.GroupLayout(AddCoursesPanel);
         AddCoursesPanel.setLayout(AddCoursesPanelLayout);
@@ -397,11 +443,6 @@ public class CourseMangnment extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(AddCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(StdIdSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCoursesPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddCoursesPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -417,17 +458,25 @@ public class CourseMangnment extends javax.swing.JFrame {
                             .addComponent(Course4Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(AddCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AddCoursesPanelLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(SemesterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCoursesPanelLayout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addGroup(AddCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(C1Box, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(C2Box, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(C3Box, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(C4Box, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(35, 35, 35))
-                            .addGroup(AddCoursesPanelLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(SemesterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(35, 35, 35))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCoursesPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(AddCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCoursesPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         AddCoursesPanelLayout.setVerticalGroup(
@@ -463,7 +512,9 @@ public class CourseMangnment extends javax.swing.JFrame {
                 .addGroup(AddCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Course4Label)
                     .addComponent(C4Box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 243, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         jPanel4.setBackground(new java.awt.Color(102, 204, 255));
@@ -554,15 +605,6 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(CourseTable);
-        if (CourseTable.getColumnModel().getColumnCount() > 0) {
-            CourseTable.getColumnModel().getColumn(0).setHeaderValue("ID");
-            CourseTable.getColumnModel().getColumn(1).setHeaderValue("Student Name");
-            CourseTable.getColumnModel().getColumn(2).setHeaderValue("Semester");
-            CourseTable.getColumnModel().getColumn(3).setHeaderValue("Course 1");
-            CourseTable.getColumnModel().getColumn(4).setHeaderValue("Course 2");
-            CourseTable.getColumnModel().getColumn(5).setHeaderValue("Course 3");
-            CourseTable.getColumnModel().getColumn(6).setHeaderValue("Course 4");
-        }
 
         jPanel10.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -713,7 +755,7 @@ public class CourseMangnment extends javax.swing.JFrame {
         jLabel12.setText("Course");
 
         Course1Label1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Course1Label1.setText("Content");
+        Course1Label1.setText("Content path");
 
         Course4Label1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Course4Label1.setText("Lecture Tittle");
@@ -841,17 +883,6 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
-        LogoutLecture.setBackground(new java.awt.Color(51, 153, 255));
-        LogoutLecture.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        LogoutLecture.setText("Log out");
-        LogoutLecture.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LogoutLecture.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LogoutLecture.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutLectureActionPerformed(evt);
-            }
-        });
-
         PrintLecture.setBackground(new java.awt.Color(51, 153, 255));
         PrintLecture.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         PrintLecture.setText("Print");
@@ -863,6 +894,17 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
+        UpdateLecture1.setBackground(new java.awt.Color(51, 153, 255));
+        UpdateLecture1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        UpdateLecture1.setText("Update Lecture");
+        UpdateLecture1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        UpdateLecture1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UpdateLecture1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateLecture1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -870,13 +912,13 @@ public class CourseMangnment extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(AddLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116)
+                .addGap(41, 41, 41)
+                .addComponent(UpdateLecture1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addComponent(DeleteLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+                .addGap(72, 72, 72)
                 .addComponent(PrintLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
-                .addComponent(LogoutLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -884,10 +926,10 @@ public class CourseMangnment extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeleteLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrintLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                    .addComponent(PrintLecture, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateLecture1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout LecturePanelLayout = new javax.swing.GroupLayout(LecturePanel);
@@ -909,8 +951,7 @@ public class CourseMangnment extends javax.swing.JFrame {
             LecturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(AddCoursesPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LecturePanelLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1047,6 +1088,9 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(CourseTable3);
+        if (CourseTable3.getColumnModel().getColumnCount() > 0) {
+            CourseTable3.getColumnModel().getColumn(3).setHeaderValue("Lecture Tittle");
+        }
 
         jPanel13.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -1072,17 +1116,6 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
-        LogoutAssignment.setBackground(new java.awt.Color(51, 153, 255));
-        LogoutAssignment.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        LogoutAssignment.setText("Log out");
-        LogoutAssignment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LogoutAssignment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LogoutAssignment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutAssignmentActionPerformed(evt);
-            }
-        });
-
         PrintAssignment.setBackground(new java.awt.Color(51, 153, 255));
         PrintAssignment.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         PrintAssignment.setText("Print");
@@ -1094,6 +1127,17 @@ public class CourseMangnment extends javax.swing.JFrame {
             }
         });
 
+        AddLecture2.setBackground(new java.awt.Color(51, 153, 255));
+        AddLecture2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        AddLecture2.setText("Update Assignment");
+        AddLecture2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AddLecture2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AddLecture2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddLecture2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1101,13 +1145,13 @@ public class CourseMangnment extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(AddAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(37, 37, 37)
+                .addComponent(AddLecture2)
+                .addGap(45, 45, 45)
                 .addComponent(DeleteAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(37, 37, 37)
                 .addComponent(PrintAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(LogoutAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1115,10 +1159,10 @@ public class CourseMangnment extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeleteAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrintAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                    .addComponent(PrintAssignment, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddLecture2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout LecturePanel1Layout = new javax.swing.GroupLayout(LecturePanel1);
@@ -1140,8 +1184,7 @@ public class CourseMangnment extends javax.swing.JFrame {
             LecturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(AddCoursesPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LecturePanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1389,26 +1432,59 @@ public class CourseMangnment extends javax.swing.JFrame {
 
     private void CourseTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CourseTable2MouseClicked
         // TODO add your handling code here:
+        IdTextField1.setText( CourseTable2.getValueAt(CourseTable2.getSelectedRow(), 0).toString());
+        StdName1.setText( CourseTable2.getValueAt(CourseTable2.getSelectedRow(), 1).toString());
+        jTextField1.setText( CourseTable2.getValueAt(CourseTable2.getSelectedRow(), 2).toString());
+        jTextField2.setText( CourseTable2.getValueAt(CourseTable2.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_CourseTable2MouseClicked
 
     private void AddLectureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLectureActionPerformed
         // TODO add your handling code here:
+             try {
+            // TODO add your handling code here:
+            int week_no= Integer.parseInt(IdTextField1.getText());
+            String crs=StdName1.getText();
+            String cnt_path= jTextField1.getText();
+            String lec_tittle=jTextField2.getText();
+            PreparedStatement stm= con.prepareStatement("insert into lecturetable(week_no,course,lec_path,lec_tittle) values(?,?,?,?)");
+
+            stm.setInt(1,week_no );
+            stm.setString(2,crs );
+            stm.setString(3,cnt_path );
+            stm.setString(4,lec_tittle );
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "addition succeds");
+            FillTableModel1();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "addition Failed");
+        }
     }//GEN-LAST:event_AddLectureActionPerformed
 
     private void DeleteLectureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteLectureActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DeleteLectureActionPerformed
+                try {
+            // TODO add your handling code here:
+            PreparedStatement stm= con.prepareStatement("delete from lecturetable where id=?");
 
-    private void LogoutLectureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutLectureActionPerformed
-        // TODO add your handling code here:
-         int a = JOptionPane.showConfirmDialog(this,"Do you want to logout now?","logout",JOptionPane.YES_NO_OPTION);
-    if(a==0){
-    this.dispose();
-    new SignIn().setVisible(true);}
-    }//GEN-LAST:event_LogoutLectureActionPerformed
+            stm.setInt(1, lec_id.get(CourseTable2.getSelectedRow()));
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "delete succeds");
+            FillTableModel1();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "delete Failed");
+        }
+    }//GEN-LAST:event_DeleteLectureActionPerformed
 
     private void PrintLectureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintLectureActionPerformed
         // TODO add your handling code here:
+           MessageFormat header = new MessageFormat("Course Regestration");
+        MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+        
+        try {
+        CourseTable2.print(JTable.PrintMode.NORMAL, header, footer);
+        }catch (PrinterException ex) {
+         Logger.getLogger(CourseMangnment.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_PrintLectureActionPerformed
 
     private void IdTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTextField2ActionPerformed
@@ -1429,27 +1505,134 @@ public class CourseMangnment extends javax.swing.JFrame {
 
     private void CourseTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CourseTable3MouseClicked
         // TODO add your handling code here:
+         IdTextField2.setText( CourseTable3.getValueAt(CourseTable3.getSelectedRow(), 0).toString());
+        StdName2.setText( CourseTable3.getValueAt(CourseTable3.getSelectedRow(), 1).toString());
+        jTextField3.setText( CourseTable3.getValueAt(CourseTable3.getSelectedRow(), 2).toString());
+        jTextField4.setText( CourseTable3.getValueAt(CourseTable3.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_CourseTable3MouseClicked
 
     private void AddAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAssignmentActionPerformed
         // TODO add your handling code here:
+          try {
+            // TODO add your handling code here:
+            int week_no= Integer.parseInt(IdTextField2.getText());
+            String crs=StdName2.getText();
+            String cnt_path= jTextField3.getText();
+            String lec_tittle=jTextField4.getText();
+            PreparedStatement stm= con.prepareStatement("insert into assign(week_no,course,assign_path,assign_tittle) values(?,?,?,?)");
+
+            stm.setInt(1,week_no );
+            stm.setString(2,crs );
+            stm.setString(3,cnt_path );
+            stm.setString(4,lec_tittle );
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "addition succeds");
+             FillTableModel2();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "addition Failed");
+        }
+       
     }//GEN-LAST:event_AddAssignmentActionPerformed
 
     private void DeleteAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAssignmentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DeleteAssignmentActionPerformed
+          try {
+            // TODO add your handling code here:
+            PreparedStatement stm= con.prepareStatement("delete from assign where id=?");
 
-    private void LogoutAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutAssignmentActionPerformed
-           // TODO add your handling code here:
-         int a = JOptionPane.showConfirmDialog(this,"Do you want to logout now?","logout",JOptionPane.YES_NO_OPTION);
-    if(a==0){
-    this.dispose();
-    new SignIn().setVisible(true);}
-    }//GEN-LAST:event_LogoutAssignmentActionPerformed
+            stm.setInt(1, assign_id.get(CourseTable3.getSelectedRow()));
+            stm.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "delete succeds");
+            FillTableModel2();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "delete Failed");
+        }
+        
+    }//GEN-LAST:event_DeleteAssignmentActionPerformed
 
     private void PrintAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintAssignmentActionPerformed
         // TODO add your handling code here:
+           MessageFormat header = new MessageFormat("Course Regestration");
+        MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+        
+        try {
+        CourseTable3.print(JTable.PrintMode.NORMAL, header, footer);
+        }catch (PrinterException ex) {
+         Logger.getLogger(CourseMangnment.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_PrintAssignmentActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Precentage().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void UpdateLecture1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateLecture1ActionPerformed
+        // TODO add your handling code here:
+//               if(isEmpty()==0){
+        try{
+            
+                    int week_n =Integer.parseInt(IdTextField1.getText());
+                    String crs=StdName1.getText();
+                    String cnt_path = jTextField1.getText();
+                    String lec_tittle = jTextField2.getText();
+                    
+            
+         
+                    PreparedStatement stmt=con.prepareStatement("update lecturetable set week_no=?,course=?,lec_path=?,lec_tittle=? where id=?;");
+                    
+
+                    
+                    stmt.setInt(1, week_n);
+                    stmt.setString(2, crs);
+                    stmt.setString(3, cnt_path);
+                    stmt.setString(4, lec_tittle);
+                    stmt.setInt(5,lec_id.get(CourseTable2.getSelectedRow()) );
+                    stmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "updated succsefully");         
+                    
+                FillTableModel1();
+     
+        }   catch (SQLException ex) {
+              /*  Logger.getLogger(CourseMangnment.class.getName()).log(Level.SEVERE, null, ex);*/
+                 JOptionPane.showMessageDialog(this, "Error Id is Dublicate! ");  
+        }
+       
+//        else
+//           JOptionPane.showMessageDialog(this, "Empty fields! ");
+    }//GEN-LAST:event_UpdateLecture1ActionPerformed
+
+    private void AddLecture2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLecture2ActionPerformed
+        // TODO add your handling code here:
+          try{
+            
+                    int week_n =Integer.parseInt(IdTextField2.getText());
+                    String crs=StdName2.getText();
+                    String cnt_path = jTextField3.getText();
+                    String lec_tittle = jTextField4.getText();
+            
+         
+                    PreparedStatement stmt=con.prepareStatement("update assign set week_no=?,course=?,assign_path=?,assign_tittle=? where id=?;");
+                    
+
+                    
+                    stmt.setInt(1, week_n);
+                    stmt.setString(2, crs);
+                    stmt.setString(3, cnt_path);
+                    stmt.setString(4, lec_tittle);
+                    stmt.setInt(5,assign_id.get(CourseTable3.getSelectedRow()) );
+                    stmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "updated succsefully");         
+                    
+                FillTableModel2();
+     
+        }   catch (SQLException ex) {
+              /*  Logger.getLogger(CourseMangnment.class.getName()).log(Level.SEVERE, null, ex);*/
+                 JOptionPane.showMessageDialog(this, "Error Id is Dublicate! ");  
+        }
+    }//GEN-LAST:event_AddLecture2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1484,23 +1667,14 @@ public class CourseMangnment extends javax.swing.JFrame {
     private javax.swing.JButton AddAssignment;
     private javax.swing.JPanel AddCoursesPanel;
     private javax.swing.JPanel AddCoursesPanel1;
-    private javax.swing.JPanel AddCoursesPanel11;
     private javax.swing.JPanel AddCoursesPanel2;
     private javax.swing.JButton AddLecture;
-    private javax.swing.JButton AddWeekLD;
-    private javax.swing.JButton AddWeekLD3;
-    private javax.swing.JButton AddWeekLD4;
-    private javax.swing.JButton AddWeekLD5;
-    private javax.swing.JButton AddWeekLD6;
-    private javax.swing.JButton AddWeekLD7;
-    private javax.swing.JButton AddWeekLD8;
-    private javax.swing.JButton AddWeekLD9;
+    private javax.swing.JButton AddLecture2;
     private javax.swing.JPanel AssignmentsPanel;
     private javax.swing.JComboBox<String> C1Box;
     private javax.swing.JComboBox<String> C2Box;
     private javax.swing.JComboBox<String> C3Box;
     private javax.swing.JComboBox<String> C4Box;
-    private javax.swing.JTextField Conetent1;
     private javax.swing.JLabel Course1Label;
     private javax.swing.JLabel Course1Label1;
     private javax.swing.JLabel Course1Label2;
@@ -1516,40 +1690,13 @@ public class CourseMangnment extends javax.swing.JFrame {
     private javax.swing.JTable CourseTable3;
     private javax.swing.JButton DeleteAssignment;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JButton DeleteBtnLD;
-    private javax.swing.JButton DeleteBtnLD3;
-    private javax.swing.JButton DeleteBtnLD4;
-    private javax.swing.JButton DeleteBtnLD5;
-    private javax.swing.JButton DeleteBtnLD6;
-    private javax.swing.JButton DeleteBtnLD7;
-    private javax.swing.JButton DeleteBtnLD8;
-    private javax.swing.JButton DeleteBtnLD9;
     private javax.swing.JButton DeleteLecture;
     private javax.swing.JTextField IdTextField;
     private javax.swing.JTextField IdTextField1;
     private javax.swing.JTextField IdTextField2;
-    private javax.swing.JTable LdTable;
-    private javax.swing.JTable LdTable3;
-    private javax.swing.JTable LdTable4;
-    private javax.swing.JTable LdTable5;
-    private javax.swing.JTable LdTable6;
-    private javax.swing.JTable LdTable7;
-    private javax.swing.JTable LdTable8;
-    private javax.swing.JTable LdTable9;
-    private javax.swing.JTextField LectTittle;
     private javax.swing.JPanel LecturePanel;
     private javax.swing.JPanel LecturePanel1;
-    private javax.swing.JButton LogoutAssignment;
     private javax.swing.JButton LogoutBtn;
-    private javax.swing.JButton LogoutBtn10;
-    private javax.swing.JButton LogoutBtn11;
-    private javax.swing.JButton LogoutBtn12;
-    private javax.swing.JButton LogoutBtn13;
-    private javax.swing.JButton LogoutBtn14;
-    private javax.swing.JButton LogoutBtn4;
-    private javax.swing.JButton LogoutBtn8;
-    private javax.swing.JButton LogoutBtn9;
-    private javax.swing.JButton LogoutLecture;
     private javax.swing.JButton PrintAssignment;
     private javax.swing.JButton PrintBtn;
     private javax.swing.JButton PrintLecture;
@@ -1567,26 +1714,15 @@ public class CourseMangnment extends javax.swing.JFrame {
     private javax.swing.JTextField StdName2;
     private javax.swing.JTextField StdSearchField;
     private javax.swing.JButton UpdateBtn;
-    private javax.swing.JButton UpdateBtnLD;
-    private javax.swing.JButton UpdateBtnLD3;
-    private javax.swing.JButton UpdateBtnLD4;
-    private javax.swing.JButton UpdateBtnLD5;
-    private javax.swing.JButton UpdateBtnLD6;
-    private javax.swing.JButton UpdateBtnLD7;
-    private javax.swing.JButton UpdateBtnLD8;
-    private javax.swing.JButton UpdateBtnLD9;
-    private javax.swing.JTextField WeekNoLD;
+    private javax.swing.JButton UpdateLecture1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
@@ -1594,45 +1730,13 @@ public class CourseMangnment extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
-    private javax.swing.JPanel jPanel44;
-    private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
