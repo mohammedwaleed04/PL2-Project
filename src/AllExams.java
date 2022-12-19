@@ -1,9 +1,9 @@
-
+package lms;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,10 +24,10 @@ public class AllExams extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from quiz  ");
-           jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+//           jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e)
         {

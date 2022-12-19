@@ -1,4 +1,4 @@
-
+package lms;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -46,6 +46,7 @@ public class RegisteredCourses extends javax.swing.JFrame {
         ORExamButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -56,9 +57,7 @@ public class RegisteredCourses extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Adventure", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RegisteredCourses");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 24, 397, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Courses.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 450, -1));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 14, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 1360, 10));
 
@@ -67,24 +66,16 @@ public class RegisteredCourses extends javax.swing.JFrame {
         jLabel3.setText("Your Registered Courses is :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 187, -1, -1));
 
-        RCourse2Text.setBackground(new java.awt.Color(255, 255, 255));
         RCourse2Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        RCourse2Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(RCourse2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(659, 184, 208, -1));
 
-        RCourse1Text.setBackground(new java.awt.Color(255, 255, 255));
         RCourse1Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        RCourse1Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(RCourse1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 184, 206, -1));
 
-        RCourse3Text.setBackground(new java.awt.Color(255, 255, 255));
         RCourse3Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        RCourse3Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(RCourse3Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 184, 213, -1));
 
-        RCourse4Text.setBackground(new java.awt.Color(255, 255, 255));
         RCourse4Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        RCourse4Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(RCourse4Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(1116, 184, 200, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -94,7 +85,6 @@ public class RegisteredCourses extends javax.swing.JFrame {
 
         LDExamButton.setBackground(new java.awt.Color(255, 153, 153));
         LDExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        LDExamButton.setForeground(new java.awt.Color(0, 0, 0));
         LDExamButton.setText("Logic Desgin Exam");
         LDExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LDExamButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,29 +101,29 @@ public class RegisteredCourses extends javax.swing.JFrame {
 
         PL2ExamButton.setBackground(new java.awt.Color(153, 255, 153));
         PL2ExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        PL2ExamButton.setForeground(new java.awt.Color(0, 0, 0));
         PL2ExamButton.setText("PL2 Exam");
         PL2ExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PL2ExamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PL2ExamButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(PL2ExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 323, -1, -1));
 
         DSExamButton.setBackground(new java.awt.Color(153, 153, 255));
         DSExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        DSExamButton.setForeground(new java.awt.Color(0, 0, 0));
         DSExamButton.setText("DS Exam");
         DSExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(DSExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(969, 323, -1, -1));
 
         ORExamButton.setBackground(new java.awt.Color(51, 255, 204));
         ORExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        ORExamButton.setForeground(new java.awt.Color(0, 0, 0));
         ORExamButton.setText("OR Exam");
         ORExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(ORExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1184, 323, -1, -1));
 
-        BackButton.setBackground(new java.awt.Color(255, 255, 255));
         BackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        BackButton.setForeground(new java.awt.Color(0, 0, 0));
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back.png"))); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/Back.png"))); // NOI18N
         BackButton.setText("Back");
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,10 +131,12 @@ public class RegisteredCourses extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 680, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CoursePageBackground_1.jpg"))); // NOI18N
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 660, -1, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/CoursePageBackground_1.jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1890, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,15 +156,19 @@ public class RegisteredCourses extends javax.swing.JFrame {
        if(open==0) 
         {
             new LogicDesignExam().setVisible(true);
-            open = 1 ; 
+            open = 1;
         }
         else
         {
             JFrame jf = new JFrame();           
             jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf , "one form is allready open ");
+            JOptionPane.showMessageDialog(jf , "one form is already open ");
         }
     }//GEN-LAST:event_LDExamButtonActionPerformed
+
+    private void PL2ExamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PL2ExamButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PL2ExamButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +220,7 @@ public class RegisteredCourses extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

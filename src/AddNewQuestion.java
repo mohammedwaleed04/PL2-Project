@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package lms;
 import java.sql.*;
  import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,7 +20,7 @@ public class AddNewQuestion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
          try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select count(id) from question  ");
            if(rs.next())
@@ -227,7 +228,7 @@ public class AddNewQuestion extends javax.swing.JFrame {
         String CourseName =  CNameText.getText();
          try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("insert into question values(?,?,?,?,?,?,?,?)");
            pa.setString(1, id);
            pa.setString(2, name);

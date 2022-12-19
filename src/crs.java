@@ -123,14 +123,11 @@ public class crs extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
         emailSText = new javax.swing.JTextField();
         idField = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         nameSField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -155,6 +152,18 @@ public class crs extends javax.swing.JFrame {
         no_assign = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        RCourse2Text = new javax.swing.JTextField();
+        RCourse1Text = new javax.swing.JTextField();
+        RCourse3Text = new javax.swing.JTextField();
+        RCourse4Text = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        LDExamButton = new javax.swing.JButton();
+        PL2ExamButton = new javax.swing.JButton();
+        DSExamButton = new javax.swing.JButton();
+        ORExamButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Page");
@@ -181,9 +190,6 @@ public class crs extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/res/logout-removebg-preview.png"))); // NOI18N
-
         emailSText.setEditable(false);
 
         idField.setEditable(false);
@@ -194,28 +200,15 @@ public class crs extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(26, 35, 79));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/res/R.png"))); // NOI18N
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/res/R.png"))); // NOI18N
-        jLabel10.setText("jLabel10");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 387, Short.MAX_VALUE)))
+            .addGap(0, 393, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel12)
-                .addGap(71, 71, 71)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 174, Short.MAX_VALUE))
+            .addGap(0, 693, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -240,10 +233,7 @@ public class crs extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(128, 128, 128)
@@ -258,7 +248,7 @@ public class crs extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(emailSText, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1023, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,9 +274,7 @@ public class crs extends javax.swing.JFrame {
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(94, 94, 94)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel11))
+                .addComponent(jButton1)
                 .addGap(23, 23, 23))
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -531,7 +519,7 @@ public class crs extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1638, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,17 +536,88 @@ public class crs extends javax.swing.JFrame {
         std_info_panel.addTab("   assignments    ", jPanel3);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
-        );
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Your Registered Courses is :");
+        jPanel12.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        RCourse2Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel12.add(RCourse2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 208, -1));
+
+        RCourse1Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel12.add(RCourse1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 206, -1));
+
+        RCourse3Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel12.add(RCourse3Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, 213, -1));
+
+        RCourse4Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel12.add(RCourse4Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 80, 200, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Start The :");
+        jPanel12.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
+
+        LDExamButton.setBackground(new java.awt.Color(255, 153, 153));
+        LDExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        LDExamButton.setText("Logic Desgin Exam");
+        LDExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LDExamButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LDExamButtonMouseClicked(evt);
+            }
+        });
+        LDExamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LDExamButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(LDExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+
+        PL2ExamButton.setBackground(new java.awt.Color(153, 255, 153));
+        PL2ExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        PL2ExamButton.setText("PL2 Exam");
+        PL2ExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PL2ExamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PL2ExamButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(PL2ExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
+
+        DSExamButton.setBackground(new java.awt.Color(153, 153, 255));
+        DSExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        DSExamButton.setText("DS Exam");
+        DSExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        DSExamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DSExamButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(DSExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 180, -1, -1));
+
+        ORExamButton.setBackground(new java.awt.Color(51, 255, 204));
+        ORExamButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ORExamButton.setText("OR Exam");
+        ORExamButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel12.add(ORExamButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 180, -1, -1));
+
+        BackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/Back.png"))); // NOI18N
+        BackButton.setText("Back");
+        BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 660, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/CoursePageBackground_1.jpg"))); // NOI18N
+        jLabel14.setText("jLabel6");
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1890, 750));
 
         std_info_panel.addTab("    Exams     ", jPanel12);
 
@@ -576,63 +635,27 @@ public class crs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      try {
-          // TODO add your handling code here:
-          int nu_assign= Integer.parseInt(no_assign.getText());
-          String path=path_assign.getText();
-          PreparedStatement stm= con.prepareStatement("insert into assign (no_assign,path_assign) values(?,?)");
-          
-          stm.setInt(1,nu_assign );
-          stm.setString(2,path );
-          stm.executeUpdate();
-          JOptionPane.showMessageDialog(this, "addition succeds");
-      } catch (SQLException ex) {
-                     JOptionPane.showMessageDialog(this, "addition Failed");
-      }
-      FillTableMode2();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-              try {
-          // TODO add your handling code here:
-          int nu_assign= Integer.parseInt(no_assign.getText());
-          String path=path_assign.getText();
-          PreparedStatement stm= con.prepareStatement("update assign set no_assign=?,path_assign=? where id=?");
-          
-          stm.setInt(1,nu_assign );
-          stm.setString(2,path );
-          stm.setInt(3, assign_id.get(jTable2.getSelectedRow()));
-          stm.executeUpdate();
-          JOptionPane.showMessageDialog(this, "update succeds");
-      } catch (SQLException ex) {
-                     JOptionPane.showMessageDialog(this, "update Failed");
-      }
-         FillTableMode2();
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         no_assign.setText( jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
         path_assign.setText( jTable2.getValueAt(jTable2.getSelectedRow(), 1).toString());
     }//GEN-LAST:event_jTable2MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void LDExamButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LDExamButtonMouseClicked
         // TODO add your handling code here:
-                      try {
-          // TODO add your handling code here:
-          PreparedStatement stm= con.prepareStatement("delete from assign where id=?");
-          
-          stm.setInt(1, assign_id.get(jTable2.getSelectedRow()));
-          stm.executeUpdate();
-          JOptionPane.showMessageDialog(this, "delete succeds");
-      } catch (SQLException ex) {
-                     JOptionPane.showMessageDialog(this, "delete Failed");
-      }
-         FillTableMode2();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_LDExamButtonMouseClicked
+
+    private void LDExamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LDExamButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Exam1(emailSText.getText()).setVisible(true);
+    }//GEN-LAST:event_LDExamButtonActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Homepage().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -642,6 +665,58 @@ public class crs extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Check file");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            PreparedStatement stm= con.prepareStatement("delete from assign where id=?");
+
+            stm.setInt(1, assign_id.get(jTable2.getSelectedRow()));
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "delete succeds");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "delete Failed");
+        }
+        FillTableMode2();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            int nu_assign= Integer.parseInt(no_assign.getText());
+            String path=path_assign.getText();
+            PreparedStatement stm= con.prepareStatement("update assign set no_assign=?,path_assign=? where id=?");
+
+            stm.setInt(1,nu_assign );
+            stm.setString(2,path );
+            stm.setInt(3, assign_id.get(jTable2.getSelectedRow()));
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "update succeds");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "update Failed");
+        }
+        FillTableMode2();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int nu_assign= Integer.parseInt(no_assign.getText());
+            String path=path_assign.getText();
+            PreparedStatement stm= con.prepareStatement("insert into assign (no_assign,path_assign) values(?,?)");
+
+            stm.setInt(1,nu_assign );
+            stm.setString(2,path );
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(this, "addition succeds");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "addition Failed");
+        }
+        FillTableMode2();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -672,6 +747,18 @@ public class crs extends javax.swing.JFrame {
         if(a==0){
             this.dispose();}
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void PL2ExamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PL2ExamButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Exam2(emailSText.getText()).setVisible(true);
+    }//GEN-LAST:event_PL2ExamButtonActionPerformed
+
+    private void DSExamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSExamButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Exam3(emailSText.getText()).setVisible(true);
+    }//GEN-LAST:event_DSExamButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -709,6 +796,15 @@ public class crs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton DSExamButton;
+    private javax.swing.JButton LDExamButton;
+    private javax.swing.JButton ORExamButton;
+    private javax.swing.JButton PL2ExamButton;
+    private javax.swing.JTextField RCourse1Text;
+    private javax.swing.JTextField RCourse2Text;
+    private javax.swing.JTextField RCourse3Text;
+    private javax.swing.JTextField RCourse4Text;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField emailSText;
@@ -722,8 +818,8 @@ public class crs extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -1,4 +1,4 @@
-
+package lms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -214,7 +214,7 @@ public class UpdateExam extends javax.swing.JFrame {
         String id = EIDText.getText();
          try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from quiz where id ="+id);
            if(rs.next())
@@ -253,7 +253,7 @@ public class UpdateExam extends javax.swing.JFrame {
         String CourseName =  CNameText.getText();
         try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("update quiz set QID1=?,QID2=?,QID3=?,QID4=?,QID5=?,CourseName=? where id=? ");           
           
            pa.setString(1, Qid1);

@@ -1,5 +1,5 @@
 
-
+package lms;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -34,7 +34,6 @@ public class ExamManagement extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         AddNewExamMenu = new javax.swing.JMenu();
         EmptyMenu5 = new javax.swing.JMenu();
@@ -49,13 +48,10 @@ public class ExamManagement extends javax.swing.JFrame {
         CloseMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back.png"))); // NOI18N
         jButton1.setText("Back");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,14 +61,9 @@ public class ExamManagement extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 600, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/correctingExams.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, -1, -1));
-
         jMenuBar1.setBackground(new java.awt.Color(137, 197, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Exam Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 36), new java.awt.Color(0, 102, 153))); // NOI18N
-        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
-        AddNewExamMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/addExam.png"))); // NOI18N
         AddNewExamMenu.setText("Add New Exam");
         AddNewExamMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AddNewExamMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -90,7 +81,6 @@ public class ExamManagement extends javax.swing.JFrame {
         EmptyMenu5.setMaximumSize(new java.awt.Dimension(75, 32767));
         jMenuBar1.add(EmptyMenu5);
 
-        UpdateExamMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UpdateExam.png"))); // NOI18N
         UpdateExamMenu.setText("Update Exam");
         UpdateExamMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UpdateExamMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -106,7 +96,6 @@ public class ExamManagement extends javax.swing.JFrame {
         EmptyMenu4.setMaximumSize(new java.awt.Dimension(75, 32767));
         jMenuBar1.add(EmptyMenu4);
 
-        DeleteExamMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DeleteExam.png"))); // NOI18N
         DeleteExamMenu.setText("Delete Exam");
         DeleteExamMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DeleteExamMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -122,7 +111,6 @@ public class ExamManagement extends javax.swing.JFrame {
         EmptyMenu3.setMaximumSize(new java.awt.Dimension(85, 32767));
         jMenuBar1.add(EmptyMenu3);
 
-        AllExamsMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AllExams.png"))); // NOI18N
         AllExamsMenu.setText("All Exams");
         AllExamsMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AllExamsMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,7 +126,6 @@ public class ExamManagement extends javax.swing.JFrame {
         EmptyMenu2.setMaximumSize(new java.awt.Dimension(85, 32767));
         jMenuBar1.add(EmptyMenu2);
 
-        LogoutMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout.png"))); // NOI18N
         LogoutMenu.setText("Logout");
         LogoutMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LogoutMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -154,7 +141,6 @@ public class ExamManagement extends javax.swing.JFrame {
         EmptyMenu1.setMaximumSize(new java.awt.Dimension(85, 32767));
         jMenuBar1.add(EmptyMenu1);
 
-        CloseMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
         CloseMenu.setText("Exit");
         CloseMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CloseMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,7 +302,6 @@ public class ExamManagement extends javax.swing.JFrame {
     private javax.swing.JMenu LogoutMenu;
     private javax.swing.JMenu UpdateExamMenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

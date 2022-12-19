@@ -1,4 +1,4 @@
-
+package lms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class AddNewExam extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
           try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select count(id) from quiz  ");
            if(rs.next())
@@ -81,10 +81,7 @@ public class AddNewExam extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ClearButton.setBackground(new java.awt.Color(255, 255, 255));
         ClearButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        ClearButton.setForeground(new java.awt.Color(0, 0, 0));
-        ClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clear.png"))); // NOI18N
         ClearButton.setText("Clear");
         ClearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ClearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,10 +91,7 @@ public class AddNewExam extends javax.swing.JFrame {
         });
         getContentPane().add(ClearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, -1, -1));
 
-        SaveButton.setBackground(new java.awt.Color(255, 255, 255));
         SaveButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        SaveButton.setForeground(new java.awt.Color(0, 0, 0));
-        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
         SaveButton.setText("Save");
         SaveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,16 +100,12 @@ public class AddNewExam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/addExam.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Adventure", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Add New Exam");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 260, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 310, -1));
 
-        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
         CloseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CloseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,82 +116,60 @@ public class AddNewExam extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 1066, 10));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Course Name :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Exam ID :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Question ID 1 :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Question ID 2 :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Question ID 3 :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Question ID 4 :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Question ID 5 :");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         EIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        EIDLabel.setForeground(new java.awt.Color(0, 0, 0));
         EIDLabel.setText("00");
         getContentPane().add(EIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
 
-        CNameText.setBackground(new java.awt.Color(255, 255, 255));
         CNameText.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        CNameText.setForeground(new java.awt.Color(0, 0, 0));
         CNameText.setToolTipText("");
         getContentPane().add(CNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 700, -1));
 
-        QID1Text.setBackground(new java.awt.Color(255, 255, 255));
         QID1Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID1Text.setForeground(new java.awt.Color(0, 0, 0));
         QID1Text.setToolTipText("");
         getContentPane().add(QID1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 700, -1));
 
-        QID2Text.setBackground(new java.awt.Color(255, 255, 255));
         QID2Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID2Text.setForeground(new java.awt.Color(0, 0, 0));
         QID2Text.setToolTipText("");
         getContentPane().add(QID2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 700, -1));
 
-        QID3Text.setBackground(new java.awt.Color(255, 255, 255));
         QID3Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID3Text.setForeground(new java.awt.Color(0, 0, 0));
         QID3Text.setToolTipText("");
         getContentPane().add(QID3Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 700, -1));
 
-        QID4Text.setBackground(new java.awt.Color(255, 255, 255));
         QID4Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID4Text.setForeground(new java.awt.Color(0, 0, 0));
         QID4Text.setToolTipText("");
         getContentPane().add(QID4Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 700, -1));
 
-        QID5Text.setBackground(new java.awt.Color(255, 255, 255));
         QID5Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID5Text.setForeground(new java.awt.Color(0, 0, 0));
         QID5Text.setToolTipText("");
         getContentPane().add(QID5Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 700, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ExamPageBackground.jpg"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -209,7 +177,7 @@ public class AddNewExam extends javax.swing.JFrame {
 
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
-         ExamManagement.open=0;
+         this.dispose();
          setVisible(false);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
@@ -224,7 +192,7 @@ public class AddNewExam extends javax.swing.JFrame {
         String CourseName =  CNameText.getText();
           try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("insert into quiz values(?,?,?,?,?,?,?)");
            pa.setString(1, id);
            pa.setString(2, Qid1);

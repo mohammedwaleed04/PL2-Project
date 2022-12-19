@@ -1,4 +1,6 @@
-
+package lms;
+import java.util.logging.*;
+import java.sql.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
@@ -23,16 +25,30 @@ public class Exam1 extends javax.swing.JFrame {
     /**
      * Creates new form Exam1
      */
-    public Exam1() {
+    Connection con;
+    String mail;
+    public Exam1(String email) {
         initComponents();
-          this.setLocationRelativeTo(null);
-        
+        this.setLocationRelativeTo(null);
+        con = MyConnection.createConnection();
         // didn't create same choise in the next quest
         bg.add(jRadioButton1_2);
         bg.add(jRadioButton1_3);
         bg.add(jRadioButton1_4);
         bg.add(jRadioButton1_5);
-        
+        jButton_Next_QActionPerformed(null);
+        mail = email;
+    }
+    
+    public Exam1() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        con = MyConnection.createConnection();
+        // didn't create same choise in the next quest
+        bg.add(jRadioButton1_2);
+        bg.add(jRadioButton1_3);
+        bg.add(jRadioButton1_4);
+        bg.add(jRadioButton1_5);
         jButton_Next_QActionPerformed(null);
     }
     
@@ -218,24 +234,20 @@ public class Exam1 extends javax.swing.JFrame {
 
     private void jButton_Next_QActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Next_QActionPerformed
 
-//        if (jButton_Next_Q.getText ().equals("Restart The Quiz") )
-//        {
-//            //restart the quiz
-//            index = 0;
-//            correct = 0;
-//        }
-
         if (index == questions.length)
         {
             // display the user score
             Lbl_Question.setText("Your Score is :" +correct+ "/" +questions.length);
-
+            try{
+                 Statement smt = con.createStatement();
+                 smt.executeUpdate("update student set logic =   '" +correct+ "' where email = '" + mail + "'");
+            }catch(SQLException e){
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
         }
-
+        }
         else {
             // enable radio buttons
             enableRbuttons(true);
-
             // display the next question:
             Lbl_Question.setText(questions [index]);
             jRadioButton1_2.setText(options [index][0]);
@@ -245,13 +257,9 @@ public class Exam1 extends javax.swing.JFrame {
 
             if (index == questions.length-1){
                 jButton_Next_Q.setText("Finish and See the Result");
-                
-            }
-
-        
+            }  
         }
-
-        // clear the selection
+     // clear the selection
         bg.clearSelection();
 
     }//GEN-LAST:event_jButton_Next_QActionPerformed

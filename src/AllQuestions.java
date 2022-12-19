@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package lms;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -22,10 +23,10 @@ public class AllQuestions extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from question  ");
-           jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+//           jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e)
         {

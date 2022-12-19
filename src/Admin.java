@@ -52,6 +52,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         allTable = new javax.swing.JTable();
+        BackButton = new javax.swing.JButton();
         jToolBar2 = new javax.swing.JToolBar();
         jPanel11 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
@@ -171,6 +172,16 @@ public class Admin extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(allTable);
 
+        BackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/Back.png"))); // NOI18N
+        BackButton.setText("Back");
+        BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -179,13 +190,19 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BackButton)
+                .addGap(150, 150, 150))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BackButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jToolBar1.add(jPanel9);
@@ -999,6 +1016,12 @@ public class Admin extends javax.swing.JFrame {
         FillAddTableModel();
     }//GEN-LAST:event_allTableFocusGained
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new SignIn().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1035,6 +1058,7 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton addStudent;
     private javax.swing.JButton addTeacher;
     private javax.swing.JCheckBox adminCheckBoxT;

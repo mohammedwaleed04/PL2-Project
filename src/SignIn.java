@@ -27,17 +27,6 @@ public class SignIn extends javax.swing.JFrame {
         con = MyConnection.createConnection();
     }
     
-//    void createConnection() {
-//        try{
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsDB", "root", "admin");
-//            
-//        }
-//        catch (ClassNotFoundException | SQLException e){
-//            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
-//        }
-//    }
-    
     private String username;
     private String password;
     
@@ -60,7 +49,7 @@ public class SignIn extends javax.swing.JFrame {
         cancelBtn = new javax.swing.JButton();
         adminCheckBox = new javax.swing.JRadioButton();
         passField = new javax.swing.JPasswordField();
-        image = new javax.swing.JLabel();
+        ShowPassword = new javax.swing.JCheckBox();
         lms = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -136,6 +125,15 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        ShowPassword.setBackground(new java.awt.Color(204, 204, 204));
+        ShowPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ShowPassword.setText("Show password");
+        ShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -143,7 +141,7 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passLabel)
                             .addComponent(UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,11 +154,16 @@ public class SignIn extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(adminCheckBox))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(adminCheckBox))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(ShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +177,9 @@ public class SignIn extends javax.swing.JFrame {
                     .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(adminCheckBox)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminCheckBox)
+                    .addComponent(ShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
@@ -182,15 +187,13 @@ public class SignIn extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        image.setBackground(new java.awt.Color(0, 0, 153));
-
         lms.setBackground(new java.awt.Color(153, 153, 255));
         lms.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         lms.setForeground(new java.awt.Color(0, 0, 102));
         lms.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lms.setText("LEARNING MANAGEMENT SYSTEM");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/lmsLogin.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/main/resources/com/group8/view/images/lmsLogin.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,27 +202,22 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1)
-                        .addGap(51, 51, 51)
-                        .addComponent(image)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lms, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)))
-                .addGap(34, 34, 34)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(lms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,7 +249,7 @@ public class SignIn extends javax.swing.JFrame {
                 emailS = rs1.getString("email");
                 gender = rs1.getString("gender");
                 this.dispose();
-                    new Crs(nameS, ID, emailS, gender).setVisible(true);
+                    new crs(nameS, ID, emailS, gender).setVisible(true);
             }
             
             if(rs.next()){
@@ -268,7 +266,7 @@ public class SignIn extends javax.swing.JFrame {
                 }
                 
                 if(teacher == 1){
-                    this.dispose();
+                    this.dispose();                 
                     new CourseMangnment().setVisible(true);
                 }
             }
@@ -333,6 +331,14 @@ public class SignIn extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordActionPerformed
+        // TODO add your handling code here:
+        if(ShowPassword.isSelected())
+            passField.setEchoChar((char)0);
+        else
+            passField.setEchoChar('*');
+    }//GEN-LAST:event_ShowPasswordActionPerformed
   
     /**
      * @param args the command line arguments
@@ -368,10 +374,10 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JLabel UserName;
     private javax.swing.JRadioButton adminCheckBox;
     private javax.swing.JButton cancelBtn;
-    private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lms;

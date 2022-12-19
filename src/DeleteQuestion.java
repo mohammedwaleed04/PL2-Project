@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package lms;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 /**
  *
  * @author A M A
@@ -215,8 +216,7 @@ public class DeleteQuestion extends javax.swing.JFrame {
         String id = QidText.getText();
          try
         {
-           
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from question where id ="+id);
            if(rs.next())
@@ -250,7 +250,7 @@ public class DeleteQuestion extends javax.swing.JFrame {
         String id = QidText.getText();
        try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("delete from question where id=? ");            
            pa.setString(1, id); 
            pa.executeUpdate();

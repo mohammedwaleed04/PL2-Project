@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package lms;
 import java.sql.*;
  import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -213,7 +214,7 @@ public class updateQuestion extends javax.swing.JFrame {
         String CourseName =  CNameText.getText();
         try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("update question set name=?,opt1=?,opt2=?,opt3=?,opt4=?,answer=?,CourseName=? where id=? ");           
            pa.setString(1, name);
            pa.setString(2, opt1);
@@ -255,7 +256,7 @@ public class updateQuestion extends javax.swing.JFrame {
 
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
-        QuestionManagement.open=0;
+//        QuestionManagement.open=0;
          setVisible(false);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
@@ -264,7 +265,7 @@ public class updateQuestion extends javax.swing.JFrame {
         String id = QuestionIdText.getText();
          try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from question where id ="+id);
            if(rs.next())

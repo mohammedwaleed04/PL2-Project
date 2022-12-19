@@ -1,3 +1,9 @@
+package lms;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
@@ -26,6 +32,21 @@ public class Exam2 extends javax.swing.JFrame {
     /**
      * Creates new form Exam2
      */
+    Connection con;
+    String mail;
+    public Exam2(String email) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        con = MyConnection.createConnection();
+        // didn't create same choise in the next quest
+        bg.add(jRadioButton1_2);
+        bg.add(jRadioButton1_3);
+        bg.add(jRadioButton1_4);
+        bg.add(jRadioButton1_5);
+        jButton_Next_QActionPerformed(null);
+        mail = email;
+    }
+    
     public Exam2() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -239,7 +260,12 @@ public class Exam2 extends javax.swing.JFrame {
         {
             // display the user score
             Lbl_Question.setText("Your Score is :" +correct+ "/" +questions.length);
-
+            try{
+                 Statement smt = con.createStatement();
+                 smt.executeUpdate("update student set pl =   '" +correct+ "' where email = '" + mail + "'");
+            }catch(SQLException e){
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
 
         else {

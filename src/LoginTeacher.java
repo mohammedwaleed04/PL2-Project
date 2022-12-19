@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package lms;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
@@ -122,13 +123,9 @@ public class LoginTeacher extends javax.swing.JFrame {
     private void ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordActionPerformed
         // TODO add your handling code here:
         if(ShowPassword.isSelected())
-        {
             PasswordField.setEchoChar((char)0);
-        }
         else
-        {
             PasswordField.setEchoChar('*');
-        }
     }//GEN-LAST:event_ShowPasswordActionPerformed
 
     /**

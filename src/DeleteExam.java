@@ -1,8 +1,8 @@
-
+package lms;
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -198,7 +198,7 @@ public class DeleteExam extends javax.swing.JFrame {
 
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
-         ExamManagement.open=0;
+         this.dispose();
          setVisible(false);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
@@ -207,7 +207,7 @@ public class DeleteExam extends javax.swing.JFrame {
         String id = EIDText.getText();
          try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from quiz where id ="+id);
            if(rs.next())
@@ -240,7 +240,7 @@ public class DeleteExam extends javax.swing.JFrame {
         String id = EIDText.getText();
           try
         {
-           Connection con = ConnectionProvider.getCon();
+           Connection con = MyConnection.createConnection();
            PreparedStatement pa = con.prepareStatement("delete from quiz where id=? ");            
            pa.setString(1, id); 
            pa.executeUpdate();

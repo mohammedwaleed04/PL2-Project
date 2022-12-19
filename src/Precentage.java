@@ -30,11 +30,11 @@ public class Precentage extends javax.swing.JFrame {
         double ctrPassLOGIC =0 ;
         double ctrAllLOGIC =0 ;
         double ctrApLOGIC =0 ;
-        double ctrPassMaths=0 ;
-        double ctrApMaths=0 ;
-        double ctrAllMaths=0 ;
+    double ctrPassMaths=0 ;
+    double ctrApMaths=0 ;
+    double ctrAllMaths=0 ;
 
-        int Pl, Ds, Maths, Logic;
+    int Pl, Ds, Maths, Logic;
     
     Connection con ;
     public Precentage() {
@@ -44,7 +44,7 @@ public class Precentage extends javax.swing.JFrame {
     }
     
     public void Fill(){
-        DecimalFormat decimalFormat = new DecimalFormat("0.000");
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
         try{
             Statement smt = con.createStatement();
             ResultSet rs = smt.executeQuery("select pl, ds, maths, logic from student");
@@ -339,6 +339,8 @@ public class Precentage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Precentage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

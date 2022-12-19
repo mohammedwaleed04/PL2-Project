@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+package lms;
  import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author A M A
  */
 public class QuestionManagement extends javax.swing.JFrame {
-public static int open = 0 ;
+    public static int open = 0 ;
     /**
      * /*Creates new form Teacher_Homapage*/
    
@@ -30,7 +30,6 @@ public static int open = 0 ;
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Add_New_Question = new javax.swing.JMenu();
         Update_Question = new javax.swing.JMenu();
@@ -46,8 +45,6 @@ public static int open = 0 ;
 
         BackButton.setBackground(new java.awt.Color(255, 204, 0));
         BackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        BackButton.setForeground(new java.awt.Color(0, 0, 0));
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back.png"))); // NOI18N
         BackButton.setText("Back");
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -57,14 +54,8 @@ public static int open = 0 ;
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 600, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/index background.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, -1, -1));
-
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Question Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 36), new java.awt.Color(255, 153, 0))); // NOI18N
-        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
-        Add_New_Question.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add new question.png"))); // NOI18N
         Add_New_Question.setText("Add New Question");
         Add_New_Question.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Add_New_Question.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -76,7 +67,6 @@ public static int open = 0 ;
         });
         jMenuBar1.add(Add_New_Question);
 
-        Update_Question.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Update Question.png"))); // NOI18N
         Update_Question.setText("Update Question");
         Update_Question.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Update_Question.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -88,7 +78,6 @@ public static int open = 0 ;
         });
         jMenuBar1.add(Update_Question);
 
-        Delete_Question.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete Question.png"))); // NOI18N
         Delete_Question.setText("Delete Question");
         Delete_Question.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Delete_Question.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -100,7 +89,6 @@ public static int open = 0 ;
         });
         jMenuBar1.add(Delete_Question);
 
-        All_Questions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all questions.png"))); // NOI18N
         All_Questions.setText("All Questions");
         All_Questions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         All_Questions.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -112,14 +100,12 @@ public static int open = 0 ;
         });
         jMenuBar1.add(All_Questions);
 
-        All_Studends_Results.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all student result.png"))); // NOI18N
         All_Studends_Results.setText("All Studends Results");
         All_Studends_Results.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         All_Studends_Results.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         All_Studends_Results.setMargin(new java.awt.Insets(0, 5, 0, 30));
         jMenuBar1.add(All_Studends_Results);
 
-        logOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout.png"))); // NOI18N
         logOut.setText("Log out");
         logOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logOut.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -131,7 +117,6 @@ public static int open = 0 ;
         });
         jMenuBar1.add(logOut);
 
-        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
         exit.setText("Exit");
         exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exit.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -290,7 +275,6 @@ public static int open = 0 ;
     private javax.swing.JMenu Delete_Question;
     private javax.swing.JMenu Update_Question;
     private javax.swing.JMenu exit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu logOut;
     // End of variables declaration//GEN-END:variables
