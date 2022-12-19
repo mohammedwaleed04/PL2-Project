@@ -35,7 +35,7 @@ assign_tittle varchar(50),
 id int primary key auto_increment
 );
 
-create table lecutretable(
+create table lecturetable(
 week_no int,
 course varchar(50),
 lec_path varchar(50),
