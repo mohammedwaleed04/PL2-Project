@@ -42,7 +42,7 @@ create table student(
     pl int,
     ds int,
     logic int,
-    maths int,
+    or int,
     course1 nvarchar(50) default('-'),
 course2 nvarchar(50) default('-'),
 course3 nvarchar(50) default('-'),
