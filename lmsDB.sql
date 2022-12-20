@@ -69,12 +69,12 @@ alter table student auto_increment = 202100;
 CREATE TABLE question (
   id  int NOT NULL ,
   Qname varchar(500) NOT NULL ,
-  opt1 varchar(500) ,
-  opt2 varchar(500) ,
-  opt3 varchar(500) ,
-  opt4 varchar(500) ,
+  opt1 varchar(500) DEFAULT '________'  ,
+  opt2 varchar(500) DEFAULT '________' ,
+  opt3 varchar(500) DEFAULT '________' ,
+  opt4 varchar(500) DEFAULT '________' ,
   answer varchar(500) NOT NULL ,
-  CourseName varchar(100) ,
+  CourseName varchar(100) NOT NULL ,
   PRIMARY KEY (id)
 ); 
 
@@ -82,13 +82,13 @@ drop table question ;
 drop table quiz ;
 
 create table quiz (
-    id varchar(10) ,
-    QID1 int ,
-    QID2 int ,
-    QID3 int ,
-    QID4 int ,
-    QID5 int ,
-    CourseName varchar(100) ,
+    id varchar(10) NOT NULL,
+    QID1 int NOT NULL,
+    QID2 int NOT NULL,
+    QID3 int NOT NULL ,
+    QID4 int NOT NULL,
+    QID5 int NOT NULL,
+    CourseName varchar(100) NOT NULL,
     PRIMARY KEY (id) ,
     CONSTRAINT FK_QID1 FOREIGN KEY (QID1)REFERENCES question(id) ,
     CONSTRAINT FK_QID2 FOREIGN KEY (QID2)REFERENCES question(id) ,
