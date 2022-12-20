@@ -33,13 +33,15 @@ public static int open = 0 ;
         EMButton = new javax.swing.JButton();
         QMButton = new javax.swing.JButton();
         CloseButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         EMButton.setBackground(new java.awt.Color(102, 204, 255));
         EMButton.setFont(new java.awt.Font("Adventure", 1, 36)); // NOI18N
+        EMButton.setForeground(new java.awt.Color(0, 0, 0));
         EMButton.setText("Exam Management");
         EMButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EMButton.addActionListener(new java.awt.event.ActionListener() {
@@ -47,10 +49,11 @@ public static int open = 0 ;
                 EMButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
+        getContentPane().add(EMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
 
         QMButton.setBackground(new java.awt.Color(255, 204, 0));
         QMButton.setFont(new java.awt.Font("Adventure", 1, 36)); // NOI18N
+        QMButton.setForeground(new java.awt.Color(0, 0, 0));
         QMButton.setText("Question Management");
         QMButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         QMButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,9 +61,12 @@ public static int open = 0 ;
                 QMButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(QMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 470, -1));
+        getContentPane().add(QMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 380, 470, -1));
 
+        CloseButton.setBackground(new java.awt.Color(255, 255, 255));
         CloseButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        CloseButton.setForeground(new java.awt.Color(0, 0, 0));
+        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/Logout.png"))); // NOI18N
         CloseButton.setText("Logout");
         CloseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CloseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +74,12 @@ public static int open = 0 ;
                 CloseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 70, -1, -1));
+        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 40, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/TeacherHomepageBackground.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1370, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,5 +147,6 @@ public static int open = 0 ;
     private javax.swing.JButton CloseButton;
     private javax.swing.JButton EMButton;
     private javax.swing.JButton QMButton;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
