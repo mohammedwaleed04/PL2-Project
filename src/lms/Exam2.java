@@ -1,12 +1,10 @@
 package lms;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
+import java.sql.*;
 import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -60,19 +58,45 @@ public class Exam2 extends javax.swing.JFrame {
         jButton_Next_QActionPerformed(null);
     }
     
+    String answer ;
+    int x = 6 ;
+    
      public void getSelectedOption (JRadioButton rbtn )
     {
         // get the selected value from the radiobutton
         // increment the index 
         // disaple the radiobutton
         // check if the user selected the right answer
-        System.out.println(rbtn.getText());
-        System.out.println(options[index][4]);
-        if (rbtn.getText().equals(options[index][4]))
-        {
-            correct++;
-        }
-        
+                  try {
+                    con = MyConnection.createConnection();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("select answer from question where id ="+ x++);
+                    if (rs.next()) 
+                    {
+                        answer = rs.getString(1);
+                         if (rbtn.getText().equals(answer))
+                              {
+                                        correct++;
+                               }                        
+                    }
+                 
+                     else 
+                    {
+                        JFrame jf = new JFrame();
+                        jf.setAlwaysOnTop(true);
+                        JOptionPane.showMessageDialog(jf, "Question ID does not exist");
+                    }
+                     }
+                    catch (Exception e) 
+                    {
+                             JFrame jf = new JFrame();
+                           jf.setAlwaysOnTop(true);
+                            JOptionPane.showMessageDialog(jf, e);
+                      }
+                            System.out.println(rbtn.getText());
+
+         System.out.println(answer);
+              
         // to go to the next question
         index++;
         enableRbuttons(false);
@@ -106,6 +130,8 @@ public class Exam2 extends javax.swing.JFrame {
         Lbl_Question = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -145,6 +171,11 @@ public class Exam2 extends javax.swing.JFrame {
         jButton_Next_Q.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Next_Q.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Next_Q.setText("Next");
+        jButton_Next_Q.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton_Next_QMousePressed(evt);
+            }
+        });
         jButton_Next_Q.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_Next_QActionPerformed(evt);
@@ -247,6 +278,8 @@ public class Exam2 extends javax.swing.JFrame {
         getSelectedOption(jRadioButton1_3);
     }//GEN-LAST:event_jRadioButton1_3ActionPerformed
 
+    
+    int i = 6;
     private void jButton_Next_QActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Next_QActionPerformed
 
         //        if (jButton_Next_Q.getText ().equals("Restart The Quiz") )
@@ -259,12 +292,17 @@ public class Exam2 extends javax.swing.JFrame {
         if (index == questions.length)
         {
             // display the user score
+             jButton_Next_Q.setText("Close");
+
             Lbl_Question.setText("Your Score is :" +correct+ "/" +questions.length);
-            try{
+            try
+            {
                  Statement smt = con.createStatement();
                  smt.executeUpdate("update student set pl =   '" +correct+ "' where email = '" + mail + "'");
-            }catch(SQLException e){
-                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
+            }
+            catch(SQLException e)
+            {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, e);
             }
         }
 
@@ -273,22 +311,51 @@ public class Exam2 extends javax.swing.JFrame {
             enableRbuttons(true);
 
             // display the next question:
-            Lbl_Question.setText(questions [index]);
-            jRadioButton1_2.setText(options [index][0]);
-            jRadioButton1_3.setText(options [index][1]);
-            jRadioButton1_4.setText(options [index][2]);
-            jRadioButton1_5.setText(options [index][3]);
-
+          try {
+                    con = MyConnection.createConnection();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("select Qname,opt1,opt2,opt3,opt4 from question where id ="+ i++);
+                    if (rs.next()) {
+                        String q1 = Integer.toString(rs.getInt(2));
+                        String q2 = Integer.toString(rs.getInt(3));
+                        String q3 = Integer.toString(rs.getInt(4));
+                        String q4 = Integer.toString(rs.getInt(5));
+                        Lbl_Question.setText(rs.getString(1));
+                        jRadioButton1_2.setText(q1);
+                        jRadioButton1_3.setText(q2);
+                        jRadioButton1_4.setText(q3);
+                        jRadioButton1_5.setText(q4);
+                    }
+                     else 
+                    {
+                        JFrame jf = new JFrame();
+                        jf.setAlwaysOnTop(true);
+                        JOptionPane.showMessageDialog(jf, "Question ID does not exist");
+                    }
+                    
+                    
+                } catch (Exception e) {
+                    JFrame jf = new JFrame();
+                    jf.setAlwaysOnTop(true);
+                    JOptionPane.showMessageDialog(jf, e);
+                }
             if (index == questions.length-1){
                 jButton_Next_Q.setText("Finish and See the Result");
-
-            }
+            }  
 
         }
 
         // clear the selection
         bg.clearSelection();
     }//GEN-LAST:event_jButton_Next_QActionPerformed
+
+    private void jButton_Next_QMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Next_QMousePressed
+        // TODO add your handling code here:
+        if( jButton_Next_Q.getText() == "Close" & index == questions.length )
+                       {
+                               setVisible(false);
+                        }
+    }//GEN-LAST:event_jButton_Next_QMousePressed
 
     /**
      * @param args the command line arguments

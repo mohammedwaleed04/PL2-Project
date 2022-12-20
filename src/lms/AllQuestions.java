@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-//import net.proteanit.sql.DbUtils;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -26,7 +26,7 @@ public class AllQuestions extends javax.swing.JFrame {
            Connection con = MyConnection.createConnection();
            Statement st = con.createStatement();
            ResultSet rs =st.executeQuery(" select * from question  ");
-//           jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+          jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e)
         {
@@ -43,13 +43,11 @@ public class AllQuestions extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CloseButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -57,22 +55,22 @@ public class AllQuestions extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all questions.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 12, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Adventure", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("All Questions");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 12, 268, -1));
 
-        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
+        CloseButton.setBackground(new java.awt.Color(255, 255, 255));
+        CloseButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        CloseButton.setForeground(new java.awt.Color(255, 0, 51));
+        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/Close.png"))); // NOI18N
+        CloseButton.setText("Close");
         CloseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CloseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CloseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 84, 1066, 10));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,9 +87,6 @@ public class AllQuestions extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1030, 420));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pages background admin.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,9 +134,7 @@ public class AllQuestions extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;

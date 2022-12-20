@@ -42,6 +42,7 @@ public static int open = 0 ;
         EMButton.setBackground(new java.awt.Color(102, 204, 255));
         EMButton.setFont(new java.awt.Font("Adventure", 1, 36)); // NOI18N
         EMButton.setForeground(new java.awt.Color(0, 0, 0));
+        EMButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/addExam.png"))); // NOI18N
         EMButton.setText("Exam Management");
         EMButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EMButton.addActionListener(new java.awt.event.ActionListener() {
@@ -49,11 +50,12 @@ public static int open = 0 ;
                 EMButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
+        getContentPane().add(EMButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, 90));
 
         QMButton.setBackground(new java.awt.Color(255, 204, 0));
         QMButton.setFont(new java.awt.Font("Adventure", 1, 36)); // NOI18N
         QMButton.setForeground(new java.awt.Color(0, 0, 0));
+        QMButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/question.png"))); // NOI18N
         QMButton.setText("Question Management");
         QMButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         QMButton.addActionListener(new java.awt.event.ActionListener() {

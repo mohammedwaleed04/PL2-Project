@@ -34,7 +34,6 @@ public class DeleteExam extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CloseButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -55,7 +54,6 @@ public class DeleteExam extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -63,98 +61,75 @@ public class DeleteExam extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DeleteExam.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Adventure", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Delete Exam ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 6, -1, -1));
 
-        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
+        CloseButton.setBackground(new java.awt.Color(255, 255, 255));
+        CloseButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        CloseButton.setForeground(new java.awt.Color(255, 0, 51));
+        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/Close.png"))); // NOI18N
+        CloseButton.setText("Close");
         CloseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CloseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CloseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
+        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 84, 1066, 10));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Exam ID :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 112, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Course Name :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Question ID 1 :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 211, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Question ID 5 :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 415, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Question ID 2 :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 259, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Question ID 3 :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 313, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Question ID 4 :");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 364, -1, -1));
 
-        QID1Text.setBackground(new java.awt.Color(255, 255, 255));
         QID1Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID1Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(QID1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 208, 700, -1));
 
-        QID2Text.setBackground(new java.awt.Color(255, 255, 255));
         QID2Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID2Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(QID2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 259, 700, -1));
 
-        CNameText.setBackground(new java.awt.Color(255, 255, 255));
         CNameText.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        CNameText.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(CNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 157, 700, -1));
 
-        QID3Text.setBackground(new java.awt.Color(255, 255, 255));
         QID3Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID3Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(QID3Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 700, -1));
 
-        QID4Text.setBackground(new java.awt.Color(255, 255, 255));
         QID4Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID4Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(QID4Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 361, 700, -1));
 
-        QID5Text.setBackground(new java.awt.Color(255, 255, 255));
         QID5Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        QID5Text.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(QID5Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 412, 700, -1));
 
-        EIDText.setBackground(new java.awt.Color(255, 255, 255));
         EIDText.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        EIDText.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(EIDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 112, 310, -1));
 
-        SearchButton.setBackground(new java.awt.Color(255, 255, 255));
         SearchButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        SearchButton.setForeground(new java.awt.Color(0, 0, 0));
-        SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/search.png"))); // NOI18N
         SearchButton.setText("Search");
         SearchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -164,10 +139,8 @@ public class DeleteExam extends javax.swing.JFrame {
         });
         getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 112, -1, -1));
 
-        DeleteButton.setBackground(new java.awt.Color(255, 255, 255));
         DeleteButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        DeleteButton.setForeground(new java.awt.Color(0, 0, 0));
-        DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/save.png"))); // NOI18N
         DeleteButton.setText("Delete");
         DeleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -177,10 +150,8 @@ public class DeleteExam extends javax.swing.JFrame {
         });
         getContentPane().add(DeleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 463, -1, -1));
 
-        ClearButton.setBackground(new java.awt.Color(255, 255, 255));
         ClearButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        ClearButton.setForeground(new java.awt.Color(0, 0, 0));
-        ClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clear.png"))); // NOI18N
+        ClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/clear.png"))); // NOI18N
         ClearButton.setText("Clear");
         ClearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ClearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -190,16 +161,13 @@ public class DeleteExam extends javax.swing.JFrame {
         });
         getContentPane().add(ClearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 463, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ExamPageBackground.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
-         this.dispose();
-         setVisible(false);
+        ExamManagement.open=0;
+        setVisible(false);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
@@ -316,8 +284,6 @@ public class DeleteExam extends javax.swing.JFrame {
     private javax.swing.JTextField QID4Text;
     private javax.swing.JTextField QID5Text;
     private javax.swing.JButton SearchButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

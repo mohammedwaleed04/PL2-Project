@@ -55,7 +55,6 @@ public class AddNewExam extends javax.swing.JFrame {
 
         ClearButton = new javax.swing.JButton();
         SaveButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CloseButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -73,7 +72,6 @@ public class AddNewExam extends javax.swing.JFrame {
         QID3Text = new javax.swing.JTextField();
         QID4Text = new javax.swing.JTextField();
         QID5Text = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -82,6 +80,7 @@ public class AddNewExam extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ClearButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        ClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/clear.png"))); // NOI18N
         ClearButton.setText("Clear");
         ClearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ClearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +91,7 @@ public class AddNewExam extends javax.swing.JFrame {
         getContentPane().add(ClearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, -1, -1));
 
         SaveButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/save.png"))); // NOI18N
         SaveButton.setText("Save");
         SaveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,19 +100,24 @@ public class AddNewExam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, -1, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Adventure", 1, 40)); // NOI18N
         jLabel2.setText("Add New Exam");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 310, -1));
 
+        CloseButton.setBackground(new java.awt.Color(255, 255, 255));
+        CloseButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        CloseButton.setForeground(new java.awt.Color(255, 0, 0));
+        CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/Close.png"))); // NOI18N
+        CloseButton.setText("Close");
+        CloseButton.setToolTipText("");
         CloseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CloseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CloseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
+        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 1066, 10));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -170,15 +175,14 @@ public class AddNewExam extends javax.swing.JFrame {
         QID5Text.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         QID5Text.setToolTipText("");
         getContentPane().add(QID5Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 700, -1));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
         // TODO add your handling code here:
-         this.dispose();
-         setVisible(false);
+         ExamManagement.open=0;
+        setVisible(false);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
@@ -273,8 +277,6 @@ public class AddNewExam extends javax.swing.JFrame {
     private javax.swing.JTextField QID4Text;
     private javax.swing.JTextField QID5Text;
     private javax.swing.JButton SaveButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
